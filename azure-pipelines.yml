@@ -35,6 +35,6 @@ steps:
     sonarQubeRunAnalysis: false
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Build.SourceDirectory)\target\petclinic.war'
+    targetPath: 'target\petclinic.war'
     artifact: 'PetClinic'
     publishLocation: 'pipeline'
