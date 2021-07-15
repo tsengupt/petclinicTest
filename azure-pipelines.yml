@@ -21,15 +21,9 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: Maven@3
+
+- task: PublishPipelineArtifact@1
   inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'install'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    testRunTitle: 'MyPetClinic'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
+    targetPath: '$(Build.SourceDirectory)\target\petclinic.war'
+    artifact: 'PetClinic'
+    publishLocation: 'pipeline'
