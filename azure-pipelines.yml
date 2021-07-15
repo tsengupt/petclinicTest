@@ -27,7 +27,6 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     testRunTitle: 'MyPetClinic'
-    codeCoverageToolOption: 'Cobertura'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
