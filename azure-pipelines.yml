@@ -4,10 +4,13 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+- azure-pipelines
 
 pool:
   name: Default
+  demands:
+    agent.name -equals PetClinic
+
 
 steps:
 - script: echo Hello, world!
@@ -23,14 +26,15 @@ steps:
     mavenPomFile: 'pom.xml'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    testRunTitle: 'PetClinicTest'
+    codeCoverageToolOption: 'Cobertura'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
-
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Build.SourcesDirectory)\target\petclinic.war'
-    artifact: 'PetclinicWar'
+    targetPath: 'target\petclinic.war'
+    artifact: 'PetClinic'
     publishLocation: 'pipeline'
